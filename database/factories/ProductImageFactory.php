@@ -20,7 +20,7 @@ class ProductImageFactory extends Factory
     {
         return [
             'product_id' => Product::inRandomOrder()->first()?->id ?? 1,
-            'image_path' => 'products/dummy_' . $this->faker->numberBetween(1, 10) . '.jpg',
+            'image_path' => 'products/dummy_' . \fake()->numberBetween(1, 10) . '.jpg',
             'is_primary' => false,
         ];
     }
