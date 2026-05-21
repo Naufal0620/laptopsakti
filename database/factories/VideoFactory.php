@@ -20,8 +20,8 @@ class VideoFactory extends Factory
     {
         return [
             'product_id' => Product::inRandomOrder()->first()?->id ?? 1,
-            'video_path' => 'videos/dummy_' . fake()->numberBetween(1, 5) . '.mp4',
-            'thumbnail_path' => 'videos/thumbnails/dummy_' . fake()->numberBetween(1, 5) . '.jpg',
+            'video_path' => 'videos/dummy_' . $this->faker->numberBetween(1, 5) . '.mp4',
+            'thumbnail_path' => 'videos/thumbnails/dummy_' . $this->faker->numberBetween(1, 5) . '.jpg',
             'status' => 'ready',
         ];
     }

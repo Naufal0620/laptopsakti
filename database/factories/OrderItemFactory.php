@@ -22,8 +22,8 @@ class OrderItemFactory extends Factory
         return [
             'order_id' => Order::inRandomOrder()->first()?->id ?? Order::factory(),
             'product_id' => Product::inRandomOrder()->first()?->id ?? 1,
-            'quantity' => fake()->numberBetween(1, 5),
-            'price_at_time' => fake()->numberBetween(10000, 50000),
+            'quantity' => $this->faker->numberBetween(1, 5),
+            'price_at_time' => $this->faker->numberBetween(10000, 50000),
         ];
     }
 }

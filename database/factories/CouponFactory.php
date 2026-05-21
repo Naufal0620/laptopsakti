@@ -17,13 +17,13 @@ class CouponFactory extends Factory
      */
     public function definition(): array
     {
-        $type = fake()->randomElement(['percentage', 'fixed']);
+        $type = $this->faker->randomElement(['percentage', 'fixed']);
         return [
-            'code' => fake()->unique()->lexify('PROMO???'),
+            'code' => $this->faker->unique()->lexify('PROMO???'),
             'type' => $type,
-            'value' => $type === 'percentage' ? fake()->numberBetween(5, 50) : fake()->numberBetween(5000, 20000),
+            'value' => $type === 'percentage' ? $this->faker->numberBetween(5, 50) : $this->faker->numberBetween(5000, 20000),
             'max_discount' => $type === 'percentage' ? 10000 : null,
-            'min_order' => fake()->numberBetween(10000, 50000),
+            'min_order' => $this->faker->numberBetween(10000, 50000),
             'start_date' => now(),
             'end_date' => now()->addMonth(),
             'is_active' => true,
