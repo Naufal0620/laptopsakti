@@ -63,13 +63,7 @@ class DatabaseSeeder extends Seeder
         // 4. Couriers
         $this->call(CourierSeeder::class);
 
-        // 5. Product Related (Videos & Images)
-        $this->call([
-            VideoSeeder::class,
-            ProductImageSeeder::class,
-        ]);
-
-        // 6. Transactional Data (Orders)
+        // 5. Transactional Data (Orders)
         $this->call(OrderSeeder::class);
     }
 }
