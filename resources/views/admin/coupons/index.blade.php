@@ -1,12 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-    <div class="flex justify-between items-center">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Manajemen Kupon') }}
-        </h2>
-        <a href="{{ route('admin.coupons.create') }}" class="px-4 py-2 bg-orange-600 text-white rounded-md text-xs font-bold uppercase tracking-widest hover:bg-orange-700 shadow-md">Tambah Kupon</a>
-    </div>
+    {{ __('Manajemen Kupon') }}
 @endsection
 
 @section('content')
@@ -69,4 +64,12 @@
         </div>
     @endif
 </div>
+@endsection
+
+@section('floating_button')
+    <a href="{{ route('admin.coupons.create') }}" class="fixed bottom-8 right-8 w-14 h-14 bg-primary-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-primary-700 hover:scale-110 transition-all duration-300 z-50 group" title="Tambah Kupon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 transition-transform group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
+        </svg>
+    </a>
 @endsection
