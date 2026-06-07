@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Kulivio - Nikmati Kuliner UMKM Terbaik</title>
+        <title>{{ config('app.name') }} - Nikmati Kuliner UMKM Terbaik</title>
+        <link rel="icon" href="{{ asset('images/logos/kulivio_logo.svg') }}" type="image/svg+xml">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -15,7 +16,7 @@
             <div class="max-w-7xl mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <x-application-logo class="w-10 h-10 text-primary-600" />
-                    <span class="font-black text-2xl tracking-tighter">KULIVIO</span>
+                    <span class="font-black text-2xl tracking-tighter">{{ config('app.name') }}</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8 text-sm font-bold uppercase tracking-widest text-gray-500">
                     <a href="{{ route('home') }}" class="hover:text-primary-600 transition">Katalog</a>

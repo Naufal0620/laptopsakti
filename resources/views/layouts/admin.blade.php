@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Admin - {{ config('app.name', 'Laravel') }}</title>
+        <title>Admin - {{ config('app.name') }}</title>
+        <link rel="icon" href="{{ asset('images/logos/kulivio_logo.svg') }}" type="image/svg+xml">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +23,7 @@
                 <div class="p-6 border-b border-gray-50">
                     <a href="{{ route('admin.dashboard') }}" class="flex items-center space-x-3">
                         <x-application-logo class="w-10 h-10 text-primary-600" />
-                        <span class="font-black text-xl tracking-tight text-gray-900">KULIVIO</span>
+                        <span class="font-black text-xl tracking-tight text-gray-900">{{ config('app.name') }}</span>
                     </a>
                 </div>
                 
