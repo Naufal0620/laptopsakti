@@ -25,13 +25,17 @@ Fitur keranjang memungkinkan pengguna untuk mengumpulkan beberapa produk sebelum
 Sistem promosi dirancang untuk meningkatkan konversi belanja.
 
 ### Fitur Promo:
-- **Product-Level Discount**: Diskon langsung pada produk menggunakan kolom `discount_type` dan `discount_value` di tabel `products`. Harga coret akan ditampilkan di UI.
+- **Product-Level Discount**: Diskon langsung pada produk menggunakan kolom `discount_type` dan `discount_value` di tabel `products`. Sistem menyediakan *Computed Attribute* `discounted_price` untuk memudahkan perhitungan. Harga coret akan ditampilkan di UI.
 - **Coupon Code**: Pengguna dapat memasukkan kode voucher saat di halaman Checkout.
-- **Validation Logic**:
-  - Cek masa berlaku (`start_date` & `end_date`).
-  - Cek kuota (`usage_limit`).
-  - Cek minimal belanja (`min_order`) terhadap `total_price` di keranjang.
-  - Cek batas penggunaan per user (`limit_per_user`).
+- **Validation Logic (Server-Side)**:
+  - **Status**: Cek `is_active`.
+  - **Masa Berlaku**: Cek `start_date` & `end_date` terhadap waktu sekarang.
+  - **Minimal Belanja**: Cek `min_order` terhadap `total_price` di keranjang.
+  - **Kuota Global**: Cek `usage_limit` terhadap total penggunaan di tabel `orders`.
+  - **Kuota User**: Cek `limit_per_user` terhadap jumlah pesanan user tersebut yang menggunakan kupon ini.
+- **Discount Calculation**:
+  - `percentage`: Memotong persentase harga dengan batas `max_discount` (jika ada).
+  - `fixed`: Memotong nominal harga secara tetap.
 
 ## 4. Checkout Experience
 

@@ -32,7 +32,7 @@ Sistem menggunakan kolom `status` pada tabel `orders` untuk melacak siklus hidup
 
 Sebagai platform khusus UMKM kuliner, stok *ready-to-go* tidak tersedia. Beberapa poin kunci:
 
-- **Expected Ready Date**: Setiap pesanan memiliki kolom `expected_ready_date` yang ditentukan berdasarkan estimasi waktu produksi UMKM.
+- **Expected Ready Date**: Setiap pesanan memiliki kolom `expected_ready_date` yang ditentukan berdasarkan **maksimal** `pre_order_days` dari seluruh produk yang ada di dalam keranjang belanja pada saat checkout.
 - **No Stock Management**: Fokus bukan pada kuantitas stok yang tersedia saat ini, melainkan pada kapasitas produksi per hari/periode.
 - **Batching**: Admin dapat mengelompokkan pesanan berdasarkan tanggal ketersediaan untuk efisiensi pengiriman.
 
@@ -40,8 +40,9 @@ Sebagai platform khusus UMKM kuliner, stok *ready-to-go* tidak tersedia. Beberap
 
 Sistem pengiriman dilakukan secara mandiri oleh tim internal (siswa):
 
-- **Shipping Cost**: Dihitung berdasarkan `distance_km` (jarak) dari lokasi UMKM ke `delivery_address`.
+- **Shipping Cost**: Dihitung berdasarkan `distance_km` (jarak) dari lokasi UMKM ke `delivery_address` menggunakan rumus Haversine di server-side.
 - **Courier Assignment**: Admin menunjuk `courier_id` (User dengan role Kurir) untuk setiap pesanan yang siap kirim.
+- **Proof of Delivery**: Kurir diwajibkan mengunggah foto bukti barang telah diterima oleh pelanggan. File ini disimpan dan referensinya dicatat pada kolom `proof_of_delivery` di tabel `orders`.
 - **Real-time Tracking**: (Future Phase) Menggunakan `delivery_lat` dan `delivery_lng` untuk pelacakan lokasi pengiriman.
 
 ## 5. Integrasi WhatsApp

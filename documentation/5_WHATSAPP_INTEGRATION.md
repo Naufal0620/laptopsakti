@@ -39,7 +39,7 @@ Saya akan segera mengirimkan bukti transfernya. Terima kasih!
 
 Data yang diperlukan untuk integrasi ini disimpan di tabel `settings`:
 - **`admin_whatsapp_number`**: Nomor tujuan utama untuk konfirmasi pembayaran (format internasional, misal: `628123456789`).
-- **`wa_message_template`**: Template teks dasar yang bisa diubah oleh admin melalui dashboard.
+- **Standardized Template**: Saat ini template pesan distandarisasi di dalam sistem untuk memastikan kelengkapan data pesanan.
 
 ## 5. Verifikasi Manual oleh Admin
 

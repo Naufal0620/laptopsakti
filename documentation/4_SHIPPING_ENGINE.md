@@ -19,12 +19,14 @@ Ongkos kirim dihitung pada saat *checkout* menggunakan rumus sederhana:
 
 ### Parameter Konfigurasi:
 Data diambil dari tabel `settings`:
-- **`shipping_cost_per_km`**: Tarif flat per kilometer. (Default saat ini: Rp 2.000,- berdasarkan `SettingSeeder`).
+- **`shipping_cost_per_km`**: Tarif flat per kilometer. (Default: Rp 2.000).
+- **`store_latitude`**: Titik koordinat Latitude lokasi UMKM/Toko.
+- **`store_longitude`**: Titik koordinat Longitude lokasi UMKM/Toko.
 
 ### Penentuan Jarak (`distance_km`):
-Untuk tahap awal, jarak ditentukan melalui:
-1.  **Google Maps API / Leaflet**: Menghitung jarak garis lurus atau rute jalan antara koordinat toko dan koordinat `delivery_lat`/`delivery_lng`.
-2.  **Manual Input (Fallback)**: Jika API tidak tersedia, sistem menggunakan estimasi zona atau input manual dari Admin.
+Jarak dihitung secara presisi di sisi server menggunakan:
+1.  **Haversine Formula**: Menghitung jarak lingkaran besar antara dua titik koordinat (`store` vs `delivery_address`) untuk mendapatkan estimasi jarak tempuh yang akurat dalam satuan KM.
+2.  **Manual Input (Fallback)**: Jika koordinat tidak tersedia, sistem menggunakan estimasi zona atau input manual dari Admin.
 
 ## 3. Alur Kerja Pengiriman (Manual Courier)
 

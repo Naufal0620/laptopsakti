@@ -33,7 +33,18 @@ Menyimpan informasi produk kuliner UMKM. Seluruh produk menggunakan sistem *Pre-
 | `is_active` | boolean | Default: true | Status ketersediaan produk. |
 | `timestamps` | - | - | `created_at`, `updated_at` |
 
-### 3. `videos`
+### 3. `product_images`
+Menyimpan banyak gambar untuk setiap produk. Satu produk bisa memiliki banyak gambar dengan satu gambar utama.
+
+| Column | Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `id` | bigint | PK, Auto Increment | |
+| `product_id` | bigint | FK (`products`) | Relasi ke produk. |
+| `image_path` | string | | Path/URL file gambar. |
+| `is_primary` | boolean | Default: false | Penanda gambar utama produk. |
+| `timestamps` | - | - | |
+
+### 4. `videos`
 Menyimpan referensi video konten untuk penemuan produk (*Discovery*).
 
 | Column | Type | Constraints | Description |
@@ -45,7 +56,7 @@ Menyimpan referensi video konten untuk penemuan produk (*Discovery*).
 | `status` | enum | Default: 'ready' | Status penayangan (`processing`, `ready`, `failed`). |
 | `timestamps` | - | - | `created_at`, `updated_at` |
 
-### 4. `orders`
+### 5. `orders`
 Mencatat transaksi pemesanan, informasi logistik berbasis jarak, dan status alur *Pre-Order*.
 
 | Column | Type | Constraints | Description |
@@ -63,10 +74,11 @@ Mencatat transaksi pemesanan, informasi logistik berbasis jarak, dan status alur
 | `discount_amount` | integer | Default: 0 | Nominal potongan harga dari kupon/diskon. |
 | `grand_total` | integer | | `(total_price + shipping_cost) - discount_amount`. |
 | `status` | enum | Default: 'pending'| `pending`, `paid`, `processing`, `shipped`, `completed`, `cancelled`. |
+| `proof_of_delivery`| string | Nullable | Path/URL foto bukti barang diterima (diunggah kurir). |
 | `expected_ready_date`| datetime | Nullable | Tanggal & Waktu estimasi pesanan siap dikirim. |
 | `timestamps` | - | - | `created_at`, `updated_at` |
 
-### 5. `coupons`
+### 6. `coupons`
 Menyimpan data voucher dan diskon yang dapat digunakan oleh pelanggan.
 
 | Column | Type | Constraints | Description |
@@ -84,7 +96,7 @@ Menyimpan data voucher dan diskon yang dapat digunakan oleh pelanggan.
 | `is_active` | boolean | Default: true | Status aktif/non-aktif voucher. |
 | `timestamps` | - | - | `created_at`, `updated_at` |
 
-### 6. `order_items`
+### 7. `order_items`
 Menyimpan rincian produk untuk setiap transaksi pesanan.
 
 | Column | Type | Constraints | Description |
@@ -96,7 +108,7 @@ Menyimpan rincian produk untuk setiap transaksi pesanan.
 | `price_at_time` | integer | | Harga produk saat transaksi (mencegah perubahan harga historis). |
 | `timestamps` | - | - | `created_at`, `updated_at` |
 
-### 7. `settings`
+### 8. `settings`
 Menyimpan konfigurasi aplikasi yang dapat diubah secara dinamis melalui Dashboard Admin.
 
 | Column | Type | Constraints | Description |
@@ -113,7 +125,7 @@ Menyimpan konfigurasi aplikasi yang dapat diubah secara dinamis melalui Dashboar
 Variabel seperti tarif dasar ongkos kirim per Kilometer (KM) disimpan di dalam tabel `settings`. Hal ini memungkinkan Administrator untuk mengubah kebijakan tarif tanpa melalui perubahan kode atau file environment.
 
 **Contoh Data Awal (Seeder):**
-- Key: `shipping_cost_per_km`
-- Value: `2000`
-- Group: `shipping`
-
+- Key: `shipping_cost_per_km` | Value: `2000` | Group: `shipping`
+- Key: `store_latitude` | Value: `-6.2088` | Group: `shipping`
+- Key: `store_longitude` | Value: `106.8456` | Group: `shipping`
+- Key: `admin_whatsapp_number` | Value: `628123456789` | Group: `whatsapp`
