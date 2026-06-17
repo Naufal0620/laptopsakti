@@ -86,8 +86,8 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-                    <a href="{{ route('register') }}" class="ms-4 text-sm text-gray-700 underline">Register</a>
+                    <a href="{{ route('login') }}" class="text-sm text-gray-700">Log in</a>
+                    <a href="{{ route('register') }}" class="ms-4 px-3 py-3 rounded-md text-sm text-white bg-primary-500">Register</a>
                 @endauth
             </div>
 

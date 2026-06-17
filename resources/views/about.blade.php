@@ -5,10 +5,10 @@
             <div class="text-center mb-16">
                 <h2 class="text-base text-primary-600 font-semibold tracking-wide uppercase">Tentang Kami</h2>
                 <p class="mt-2 text-4xl leading-10 font-black tracking-tight text-gray-900 sm:text-5xl">
-                    Kulivio: Masa Depan Kuliner UMKM
+                    Kulivio: Masa Depan Kuliner Tradisional
                 </p>
                 <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                    Menghubungkan kelezatan autentik UMKM lokal dengan kemudahan teknologi video interaktif.
+                    Menghubungkan kelezatan autentik kuliner tradisional lokal dengan kemudahan teknologi video interaktif.
                 </p>
             </div>
 
@@ -26,10 +26,10 @@
                 <div class="space-y-6">
                     <h3 class="text-3xl font-bold text-gray-900">Visi Kami</h3>
                     <p class="text-gray-600 leading-relaxed text-lg">
-                        Kulivio lahir dari keinginan untuk membantu UMKM kuliner naik kelas. Kami percaya bahwa setiap hidangan memiliki cerita, dan video adalah cara terbaik untuk menceritakannya.
+                        Kulivio lahir dari keinginan untuk membantu kuliner tradisional naik kelas. Kami percaya bahwa setiap hidangan memiliki cerita, dan video adalah cara terbaik untuk menceritakannya.
                     </p>
                     <p class="text-gray-600 leading-relaxed text-lg">
-                        Melalui konsep <strong>Visual Discovery</strong> dan <strong>Hyper-Local E-Commerce</strong>, kami memudahkan konsumen menemukan kuliner tersembunyi di sekitar mereka sekaligus memberikan panggung bagi para pelaku UMKM untuk bersinar.
+                        Melalui konsep <strong>Visual Discovery</strong> dan <strong>Hyper-Local E-Commerce</strong>, kami memudahkan konsumen menemukan kuliner tersembunyi di sekitar mereka sekaligus memberikan panggung bagi para pelaku kuliner tradisional untuk bersinar.
                     </p>
                     <div class="flex items-center space-x-4 pt-4">
                         <div class="flex -space-x-2">
@@ -44,11 +44,8 @@
 
             {{-- Supporters Section --}}
             <div class="border-t border-gray-100 pt-24 pb-12 text-center">
-                <h3 class="text-sm font-black text-gray-400 uppercase tracking-[0.3em] mb-12">Didukung Oleh</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-70 transition-all duration-500">
-                    <div class="flex items-center justify-center p-4">
-                        <img src="{{ asset('images/logos/bima.png') }}" alt="Bima" class="h-24 w-auto object-contain">
-                    </div>
+                <h3 class="text-sm font-black text-gray-400 uppercase tracking-[0.3em] mb-12">Supported By</h3>
+                <div class="grid grid-cols-3 md:grid-cols-5 mx-20 md:mx-30 items-center opacity-70 transition-all duration-500">
                     <div class="flex items-center justify-center p-4">
                         <img src="{{ asset('images/logos/unimed.png') }}" alt="Unimed" class="h-24 w-auto object-contain">
                     </div>
@@ -57,6 +54,12 @@
                     </div>
                     <div class="flex items-center justify-center p-4">
                         <img src="{{ asset('images/logos/kampus_berdampak.png') }}" alt="Kampus Berdampak" class="h-24 w-auto object-contain">
+                    </div>
+                    <div class="flex items-center justify-center p-4">
+                        <img src="{{ asset('images/logos/bima.png') }}" alt="Bima" class="h-24 w-auto object-contain">
+                    </div>
+                    <div class="flex items-center justify-center p-4">
+                        <img src="{{ asset('images/logos/smk_negeri_3_tanjung_balai.png') }}" alt="SMK Negeri 3 Tanjung Balai" class="h-24 w-auto object-contain">
                     </div>
                 </div>
             </div>
