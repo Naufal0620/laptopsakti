@@ -15,34 +15,7 @@
         <span class="text-[10px] mt-1 font-medium">Explore</span>
     </a>
 
-    @if(Auth::check() && Auth::user()->role === 'courier')
-        <a href="{{ route('courier.dashboard') }}" class="flex flex-col items-center {{ request()->routeIs('courier.dashboard') ? 'text-primary-600' : 'text-gray-400' }}">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-            </svg>
-            <span class="text-[10px] mt-1 font-medium">Tugas</span>
-        </a>
-    @else
-        <a href="{{ route('cart.index') }}" class="flex flex-col items-center {{ request()->routeIs('cart.index') ? 'text-primary-600' : 'text-gray-400' }} relative">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-            @if(count(session('cart', [])) > 0)
-                <span class="absolute -top-1 -right-1 bg-primary-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full">{{ count(session('cart', [])) }}</span>
-            @endif
-            <span class="text-[10px] mt-1 font-medium">Keranjang</span>
-        </a>
-    @endif
-
-    <a href="{{ Auth::check() ? route('dashboard') : route('login') }}" class="flex flex-col items-center {{ request()->routeIs('dashboard') ? 'text-primary-600' : 'text-gray-400' }}">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-        <span class="text-[10px] mt-1 font-medium">Pesanan</span>
-    </a>
-
-    <a href="{{ Auth::check() ? route('profile.edit') : route('login') }}" class="flex flex-col items-center {{ request()->routeIs('profile.edit') ? 'text-primary-600' : 'text-gray-400' }}">
+    <a href="{{ Auth::check() ? route('profile.edit') : route('login') }}" class="flex flex-col items-center {{ request()->routeIs('profile.edit') || request()->routeIs('login') ? 'text-primary-600' : 'text-gray-400' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>

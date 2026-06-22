@@ -26,17 +26,16 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        if ($request->user()->role !== 'admin') {
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route('login')->withErrors(['email' => 'Hanya akun administrator yang diperbolehkan masuk.']);
+        }
+
         $request->session()->regenerate();
 
-        if ($request->user()->role === 'admin') {
-            return redirect()->intended(route('admin.dashboard', absolute: false));
-        }
-
-        if ($request->user()->role === 'courier') {
-            return redirect()->intended(route('courier.dashboard', absolute: false));
-        }
-
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('admin.dashboard', absolute: false));
     }
 
     /**

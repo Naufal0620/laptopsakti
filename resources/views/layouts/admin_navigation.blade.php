@@ -19,12 +19,6 @@
                     <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.*')">
                         {{ __('Produk') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.*')">
-                        {{ __('Pesanan') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('admin.coupons.index')" :active="request()->routeIs('admin.coupons.*')">
-                        {{ __('Kupon') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                         {{ __('User') }}
                     </x-nav-link>
@@ -94,12 +88,6 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.*')">
                 {{ __('Produk') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.*')">
-                {{ __('Pesanan') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('admin.coupons.index')" :active="request()->routeIs('admin.coupons.*')">
-                {{ __('Kupon') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
                 {{ __('User') }}

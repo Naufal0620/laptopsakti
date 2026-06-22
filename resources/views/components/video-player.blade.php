@@ -52,7 +52,7 @@
             const url = '{{ route('products.show', $video->product) }}';
             const shareData = {
                 title: '{{ $video->product->name }}',
-                text: 'Lihat produk kuliner menarik ini di Kulivio!',
+                text: 'Lihat laptop premium menarik ini di LaptopSakti!',
                 url: url
             };
             try {
@@ -154,8 +154,16 @@
 
     {{-- Overlay Controls --}}
     <div class="absolute bottom-6 right-4 flex flex-col items-center space-y-6 z-20">
-        {{-- Product Detail Link (Beli) --}}
-        <a href="{{ route('products.show', $video->product) }}" class="flex flex-col items-center text-white">
+        {{-- WhatsApp Order Link (Beli) --}}
+        @php
+            $whatsappNumber = \App\Models\Setting::getValue('admin_whatsapp_number', '6285270110305');
+            $message = "Halo LaptopSakti! Saya tertarik untuk membeli laptop berikut:\n\n" .
+                       "💻 Laptop: " . $video->product->name . "\n" .
+                       "💵 Harga: Rp " . number_format($video->product->price, 0, ',', '.') . "\n\n" .
+                       "Apakah laptop ini masih tersedia?";
+            $waUrl = "https://wa.me/" . $whatsappNumber . "?text=" . rawurlencode($message);
+        @endphp
+        <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center text-white">
             <div class="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
@@ -197,13 +205,14 @@
     </div>
 
     {{-- Product Info Overlay --}}
-    <div class="absolute bottom-6 left-4 right-16 text-white bg-gradient-to-t from-black/60 to-transparent p-4 rounded-xl backdrop-blur-[2px]">
+    <div class="absolute bottom-6 left-4 right-16 text-white bg-gradient-to-t from-black/60 to-transparent p-4 rounded-xl backdrop-blur-[2px] z-20">
         <div class="flex items-center space-x-2 mb-1">
-            <span class="bg-primary-500 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">Pre-Order</span>
-            <span class="text-xs opacity-80">{{ $video->product->pre_order_days }} Hari</span>
+            <span class="bg-primary-500 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">Ready Stock</span>
         </div>
-        <h3 class="font-bold text-xl leading-tight mb-1">{{ $video->product->name }}</h3>
-        <p class="text-2xl font-black text-primary-400">Rp {{ number_format($video->product->discounted_price, 0, ',', '.') }}</p>
+        <a href="{{ route('products.show', $video->product) }}" class="hover:underline">
+            <h3 class="font-bold text-xl leading-tight mb-1">{{ $video->product->name }}</h3>
+        </a>
+        <p class="text-2xl font-black text-primary-400">Rp {{ number_format($video->product->price, 0, ',', '.') }}</p>
         <p class="text-xs opacity-70 mt-2 line-clamp-2">{{ $video->product->description }}</p>
     </div>
 </div>

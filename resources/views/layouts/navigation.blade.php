@@ -23,31 +23,10 @@
                     </x-nav-link>
                     @auth
                         @if(Auth::user()->role === 'admin')
-                            <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
-                                {{ __('Keranjang') }} ({{ count(session('cart', [])) }})
-                            </x-nav-link>
                             <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')">
                                 {{ __('Admin Panel') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Pesanan Saya') }}
-                            </x-nav-link>
-                        @elseif(Auth::user()->role === 'courier')
-                            <x-nav-link :href="route('courier.dashboard')" :active="request()->routeIs('courier.*')">
-                                {{ __('Dashboard Kurir') }}
-                            </x-nav-link>
-                        @else
-                            <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
-                                {{ __('Keranjang') }} ({{ count(session('cart', [])) }})
-                            </x-nav-link>
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Pesanan Saya') }}
-                            </x-nav-link>
                         @endif
-                    @else
-                        <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
-                            {{ __('Keranjang') }} ({{ count(session('cart', [])) }})
-                        </x-nav-link>
                     @endauth
                 </div>
             </div>
@@ -86,8 +65,7 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="px-3 py-3 rounded-md text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out">Log in</a>
-                    <a href="{{ route('register') }}" class="ms-4 px-3 py-3 rounded-md text-sm text-white bg-primary-500 hover:bg-primary-600 transition duration-150 ease-in-out">Register</a>
+                    <a href="{{ route('login') }}" class="px-3 py-3 rounded-md text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out font-semibold">Log in</a>
                 @endauth
             </div>
 
@@ -118,31 +96,10 @@
             
             @auth
                 @if(Auth::user()->role === 'admin')
-                    <x-responsive-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
-                        {{ __('Keranjang') }} ({{ count(session('cart', [])) }})
-                    </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')">
                         {{ __('Admin Panel') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Pesanan Saya') }}
-                    </x-responsive-nav-link>
-                @elseif(Auth::user()->role === 'courier')
-                    <x-responsive-nav-link :href="route('courier.dashboard')" :active="request()->routeIs('courier.*')">
-                        {{ __('Dashboard Kurir') }}
-                    </x-responsive-nav-link>
-                @else
-                    <x-responsive-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
-                        {{ __('Keranjang') }} ({{ count(session('cart', [])) }})
-                    </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Pesanan Saya') }}
-                    </x-responsive-nav-link>
                 @endif
-            @else
-                <x-responsive-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
-                    {{ __('Keranjang') }} ({{ count(session('cart', [])) }})
-                </x-responsive-nav-link>
             @endauth
         </div>
 
@@ -171,9 +128,8 @@
                     </form>
                 </div>
             @else
-                <div class="px-4 py-2">
-                    <a href="{{ route('login') }}" class="block text-base font-medium text-gray-500 hover:text-gray-800">Log in</a>
-                    <a href="{{ route('register') }}" class="block text-base font-medium text-gray-500 hover:text-gray-800">Register</a>
+                <div class="px-4 py-2 border-t border-gray-100">
+                    <a href="{{ route('login') }}" class="block text-base font-medium text-gray-500 hover:text-gray-800 py-2">Log in</a>
                 </div>
             @endauth
         </div>

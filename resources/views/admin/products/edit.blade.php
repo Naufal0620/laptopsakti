@@ -2,7 +2,7 @@
 
 @section('header')
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Edit Produk: ') . $product->name }}
+        {{ __('Edit Laptop: ') . $product->name }}
     </h2>
 @endsection
 
@@ -17,14 +17,15 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-6">
                     <div>
-                        <x-input-label for="name" :value="__('Nama Produk')" />
+                        <x-input-label for="name" :value="__('Nama Laptop')" />
                         <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $product->name)" required autofocus />
                         <x-input-error class="mt-2" :messages="$errors->get('name')" />
                     </div>
 
                     <div>
-                        <x-input-label for="description" :value="__('Deskripsi Produk')" />
+                        <x-input-label for="description" :value="__('Spesifikasi & Deskripsi')" />
                         <textarea id="description" name="description" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" rows="6" required>{{ old('description', $product->description) }}</textarea>
+                        <x-input-error class="mt-2" :messages="$errors->get('description')" />
                     </div>
                 </div>
 
@@ -37,34 +38,10 @@
                         <p class="mt-1 text-xs text-gray-400 italic">Anda bisa mengunggah banyak foto sekaligus.</p>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <x-input-label for="price" :value="__('Harga Dasar (Rp)')" />
-                            <x-text-input id="price" name="price" type="number" class="mt-1 block w-full" :value="old('price', $product->price)" required />
-                            <x-input-error class="mt-2" :messages="$errors->get('price')" />
-                        </div>
-                        <div>
-                            <x-input-label for="pre_order_days" :value="__('Estimasi PO (Hari)')" />
-                            <x-text-input id="pre_order_days" name="pre_order_days" type="number" class="mt-1 block w-full" :value="old('pre_order_days', $product->pre_order_days)" required />
-                            <x-input-error class="mt-2" :messages="$errors->get('pre_order_days')" />
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 gap-4">
-                        <div>
-                            <x-input-label for="discount_type" :value="__('Tipe Diskon')" />
-                            <select id="discount_type" name="discount_type" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                <option value="none" {{ old('discount_type', $product->discount_type) == 'none' ? 'selected' : '' }}>Tanpa Diskon</option>
-                                <option value="percentage" {{ old('discount_type', $product->discount_type) == 'percentage' ? 'selected' : '' }}>Persentase (%)</option>
-                                <option value="fixed" {{ old('discount_type', $product->discount_type) == 'fixed' ? 'selected' : '' }}>Potongan Harga (Rp)</option>
-                            </select>
-                            <x-input-error class="mt-2" :messages="$errors->get('discount_type')" />
-                        </div>
-                        <div>
-                            <x-input-label for="discount_value" :value="__('Nilai Diskon')" />
-                            <x-text-input id="discount_value" name="discount_value" type="number" class="mt-1 block w-full" :value="old('discount_value', $product->discount_value)" />
-                            <x-input-error class="mt-2" :messages="$errors->get('discount_value')" />
-                        </div>
+                    <div>
+                        <x-input-label for="price" :value="__('Harga (Rp)')" />
+                        <x-text-input id="price" name="price" type="number" class="mt-1 block w-full" :value="old('price', $product->price)" required />
+                        <x-input-error class="mt-2" :messages="$errors->get('price')" />
                     </div>
                 </div>
             </div>

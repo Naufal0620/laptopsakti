@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('header')
-    {{ __('Daftar Produk') }}
+    {{ __('Daftar Laptop') }}
 @endsection
 
 @section('content')
@@ -10,10 +10,8 @@
         <table class="w-full text-left">
             <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Nama Produk</th>
-                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Harga Dasar</th>
-                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Diskon</th>
-                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">PO</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Nama Laptop</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Harga</th>
                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
                     <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Aksi</th>
                 </tr>
@@ -27,16 +25,6 @@
                     </td>
                     <td class="px-6 py-4 text-gray-600">Rp {{ number_format($product->price, 0, ',', '.') }}</td>
                     <td class="px-6 py-4">
-                        @if($product->discount_type !== 'none')
-                            <span class="px-2 py-1 bg-red-100 text-red-800 text-xs font-bold rounded">
-                                {{ $product->discount_type === 'percentage' ? $product->discount_value . '%' : 'Rp ' . number_format($product->discount_value, 0, ',', '.') }}
-                            </span>
-                        @else
-                            <span class="text-gray-400">-</span>
-                        @endif
-                    </td>
-                    <td class="px-6 py-4 text-gray-600">{{ $product->pre_order_days }} Hari</td>
-                    <td class="px-6 py-4">
                         <span class="px-2 py-1 text-xs font-bold rounded uppercase {{ $product->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
                             {{ $product->is_active ? 'Aktif' : 'Non-Aktif' }}
                         </span>
@@ -46,7 +34,7 @@
                         <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:text-red-900 font-bold text-sm uppercase" onclick="return confirm('Hapus produk ini?')">Hapus</button>
+                            <button type="submit" class="text-red-600 hover:text-red-900 font-bold text-sm uppercase" onclick="return confirm('Hapus laptop ini?')">Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -61,7 +49,7 @@
 @endsection
 
 @section('floating_button')
-    <a href="{{ route('admin.products.create') }}" class="fixed bottom-8 right-8 w-14 h-14 bg-primary-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-primary-700 hover:scale-110 transition-all duration-300 z-50 group" title="Tambah Produk">
+    <a href="{{ route('admin.products.create') }}" class="fixed bottom-8 right-8 w-14 h-14 bg-primary-600 text-white rounded-full flex items-center justify-center shadow-2xl hover:bg-primary-700 hover:scale-110 transition-all duration-300 z-50 group" title="Tambah Laptop">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 transition-transform group-hover:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4" />
         </svg>

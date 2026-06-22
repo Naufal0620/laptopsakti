@@ -27,14 +27,7 @@
                 <input type="text" name="phone" value="{{ old('phone') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500" placeholder="Contoh: 08123456789" required>
             </div>
 
-            <div>
-                <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider mb-2">Role</label>
-                <select name="role" class="w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500" required>
-                    <option value="customer">Customer</option>
-                    <option value="courier">Courier (Kurir)</option>
-                    <option value="admin">Admin</option>
-                </select>
-            </div>
+
 
             <div>
                 <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider mb-2">Password</label>

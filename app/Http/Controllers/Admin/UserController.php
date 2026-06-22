@@ -17,10 +17,6 @@ class UserController extends Controller
     {
         $query = User::latest();
 
-        if ($request->filled('role')) {
-            $query->where('role', $request->role);
-        }
-
         if ($request->filled('search')) {
             $query->where(function($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->search . '%')
@@ -51,7 +47,6 @@ class UserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'max:20'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required', 'in:admin,customer,courier'],
         ]);
 
         User::create([
@@ -59,28 +54,10 @@ class UserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'role' => $request->role,
+            'role' => 'admin',
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User baru berhasil dibuat.');
-    }
-
-    /**
-     * Update the user's role.
-     */
-    public function updateRole(Request $request, User $user)
-    {
-        $request->validate([
-            'role' => 'required|in:admin,customer,courier',
-        ]);
-
-        if ($user->id === auth()->id()) {
-            return back()->with('error', 'Anda tidak bisa mengubah role Anda sendiri.');
-        }
-
-        $user->update(['role' => $request->role]);
-
-        return back()->with('success', 'Role user ' . $user->name . ' berhasil diperbarui.');
     }
 
     /**

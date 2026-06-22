@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="mb-8 text-center">
-        <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight">Selamat Datang</h2>
-        <p class="text-sm font-medium text-gray-400 mt-1">Masuk untuk mulai berbelanja hidangan lezat.</p>
+        <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight">Admin Login</h2>
+        <p class="text-sm font-medium text-gray-400 mt-1">Masuk untuk mengelola katalog laptop, video, dan settings.</p>
     </div>
 
     <!-- Session Status -->
@@ -50,8 +50,6 @@
             </button>
         </div>
 
-        <div class="text-center pt-4 border-t border-gray-50">
-            <p class="text-xs font-bold text-gray-400">Belum punya akun? <a href="{{ route('register') }}" class="text-primary-600 hover:underline">Daftar Sekarang</a></p>
-        </div>
+
     </form>
 </x-guest-layout>

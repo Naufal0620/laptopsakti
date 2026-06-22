@@ -13,9 +13,6 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('price');
-            $table->enum('discount_type', ['none', 'percentage', 'fixed'])->default('none');
-            $table->integer('discount_value')->default(0);
-            $table->integer('pre_order_days')->default(1);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

@@ -6,20 +6,8 @@
 
 @section('content')
 <div class="mb-6 flex flex-wrap justify-between items-center gap-4">
-    <div class="flex gap-2">
-        <a href="{{ route('admin.users.index') }}" class="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 {{ !request('role') ? 'ring-2 ring-orange-500' : '' }}">
-            Semua
-        </a>
-        @foreach(['admin', 'customer', 'courier'] as $role)
-            <a href="{{ route('admin.users.index', ['role' => $role]) }}" 
-               class="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 {{ request('role') === $role ? 'ring-2 ring-orange-500' : '' }}">
-                {{ ucfirst($role) }}
-            </a>
-        @endforeach
-    </div>
-
+    <div></div>
     <form action="{{ route('admin.users.index') }}" method="GET" class="flex w-full md:w-auto">
-        <input type="hidden" name="role" value="{{ request('role') }}">
         <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama, email, atau HP..." class="w-full md:w-64 border-gray-300 rounded-l-md shadow-sm focus:border-orange-500 focus:ring-orange-500 text-sm">
         <button type="submit" class="px-4 py-2 bg-gray-800 text-white rounded-r-md hover:bg-gray-900 transition text-sm">Cari</button>
     </form>
@@ -53,15 +41,9 @@
                         <div class="text-xs text-gray-400">{{ $user->phone }}</div>
                     </td>
                     <td class="px-6 py-4">
-                        <form action="{{ route('admin.users.update-role', $user) }}" method="POST" class="flex items-center space-x-2">
-                            @csrf
-                            @method('PATCH')
-                            <select name="role" onchange="this.form.submit()" class="text-xs border-gray-200 rounded p-1 bg-gray-50 focus:border-orange-500 focus:ring-0">
-                                <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
-                                <option value="customer" {{ $user->role === 'customer' ? 'selected' : '' }}>Customer</option>
-                                <option value="courier" {{ $user->role === 'courier' ? 'selected' : '' }}>Courier</option>
-                            </select>
-                        </form>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-50 text-primary-600 uppercase tracking-wider">
+                            Admin
+                        </span>
                     </td>
                     <td class="px-6 py-4 text-xs text-gray-500">{{ $user->created_at->format('d/m/Y') }}</td>
                     <td class="px-6 py-4">
