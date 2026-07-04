@@ -1,6 +1,0 @@
-- Memerlukan nomor telepon saat register.
-- Akun kurir hanya bisa dibuat oleh admin.
-- Buat agar user bisa cancel order.
-- Buat agar ketika kurir dikerahkan untuk mengantar pesanan, maka status pesanan otomatis berubah ke "shipped".
-- Buat dashboard untuk kurir.
-- Kurir bisa menyelesaikan pesanan ketika sudah diantar.

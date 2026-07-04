@@ -22,4 +22,5 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
-KULIVIO_USER_GUIDE.html
+/tests
+/storage
