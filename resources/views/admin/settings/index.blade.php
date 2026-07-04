@@ -23,7 +23,7 @@
                             <x-input-label for="{{ $setting->key }}" :value="$setting->display_name" class="font-bold text-gray-700" />
                             <div class="mt-2">
                                 @if ($setting->type === 'boolean')
-                                    <select name="{{ $setting->key }}" id="{{ $setting->key }}" class="block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                                    <select name="{{ $setting->key }}" id="{{ $setting->key }}" class="block w-full border-gray-300 focus:border-primary-500 focus:ring-primary-500 rounded-md shadow-sm">
                                         <option value="1" {{ $setting->value == '1' ? 'selected' : '' }}>Aktif</option>
                                         <option value="0" {{ $setting->value == '0' ? 'selected' : '' }}>Non-Aktif</option>
                                     </select>

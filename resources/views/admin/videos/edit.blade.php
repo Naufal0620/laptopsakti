@@ -15,7 +15,7 @@
 
             <div>
                 <x-input-label for="product_id" :value="__('Produk Terkait')" />
-                <select id="product_id" name="product_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                <select id="product_id" name="product_id" class="mt-1 block w-full border-gray-300 focus:border-primary-500 focus:ring-primary-500 rounded-md shadow-sm" required>
                     @foreach($products as $product)
                         <option value="{{ $product->id }}" {{ old('product_id', $video->product_id) == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
                     @endforeach
@@ -25,7 +25,7 @@
 
             <div>
                 <x-input-label for="status" :value="__('Status Penayangan')" />
-                <select id="status" name="status" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                <select id="status" name="status" class="mt-1 block w-full border-gray-300 focus:border-primary-500 focus:ring-primary-500 rounded-md shadow-sm" required>
                     <option value="ready" {{ old('status', $video->status) == 'ready' ? 'selected' : '' }}>Ready (Ditampilkan)</option>
                     <option value="processing" {{ old('status', $video->status) == 'processing' ? 'selected' : '' }}>Processing</option>
                     <option value="failed" {{ old('status', $video->status) == 'failed' ? 'selected' : '' }}>Failed</option>

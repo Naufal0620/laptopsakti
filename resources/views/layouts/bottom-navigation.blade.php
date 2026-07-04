@@ -15,10 +15,10 @@
         <span class="text-[10px] mt-1 font-medium">Explore</span>
     </a>
 
-    <a href="{{ Auth::check() ? route('profile.edit') : route('login') }}" class="flex flex-col items-center {{ request()->routeIs('profile.edit') || request()->routeIs('login') ? 'text-primary-600' : 'text-gray-400' }}">
+    <a href="{{ route('products.index') }}" class="flex flex-col items-center {{ request()->routeIs('products.index') ? 'text-primary-600' : 'text-gray-400' }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
         </svg>
-        <span class="text-[10px] mt-1 font-medium">Profil</span>
+        <span class="text-[10px] mt-1 font-medium">Katalog</span>
     </a>
 </div>

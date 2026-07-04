@@ -26,9 +26,16 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'brand' => 'nullable|string|max:255',
             'description' => 'required|string',
+            'processor' => 'nullable|string|max:255',
+            'ram' => 'nullable|integer|min:0',
+            'storage' => 'nullable|integer|min:0',
+            'graphic_card' => 'nullable|string|max:255',
+            'screen_size' => 'nullable|numeric|min:0',
             'price' => 'required|integer|min:0',
             'is_active' => 'nullable|boolean',
+            'sold' => 'nullable|integer|min:0',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
@@ -71,9 +78,16 @@ class ProductController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'brand' => 'nullable|string|max:255',
             'description' => 'required|string',
+            'processor' => 'nullable|string|max:255',
+            'ram' => 'nullable|integer|min:0',
+            'storage' => 'nullable|integer|min:0',
+            'graphic_card' => 'nullable|string|max:255',
+            'screen_size' => 'nullable|numeric|min:0',
             'price' => 'required|integer|min:0',
             'is_active' => 'nullable|boolean',
+            'sold' => 'nullable|integer|min:0',
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);

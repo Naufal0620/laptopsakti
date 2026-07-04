@@ -124,5 +124,124 @@
         </div>
 
         @yield('floating_button')
+
+        <!-- Image Compression Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const forms = document.querySelectorAll('form[enctype="multipart/form-data"]');
+                forms.forEach(form => {
+                    const fileInputs = form.querySelectorAll('input[type="file"]');
+                    if (fileInputs.length === 0) return;
+
+                    form.addEventListener('submit', async function(e) {
+                        let hasImages = false;
+                        fileInputs.forEach(input => {
+                            for (let i = 0; i < input.files.length; i++) {
+                                if (input.files[i].type.startsWith('image/')) {
+                                    hasImages = true;
+                                }
+                            }
+                        });
+
+                        if (!hasImages) return;
+
+                        // Prevent default submit
+                        e.preventDefault();
+
+                        // Disable submit button and show loading text
+                        const submitBtn = form.querySelector('button[type="submit"]');
+                        let originalBtnText = '';
+                        if (submitBtn) {
+                            originalBtnText = submitBtn.innerHTML;
+                            submitBtn.disabled = true;
+                            submitBtn.innerHTML = `
+                                <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg> Mengompres Gambar...
+                            `;
+                        }
+
+                        // Compress each file input's files
+                        for (let input of fileInputs) {
+                            if (input.files.length === 0) continue;
+                            const dt = new DataTransfer();
+                            
+                            for (let i = 0; i < input.files.length; i++) {
+                                const file = input.files[i];
+                                if (file.type.startsWith('image/')) {
+                                    try {
+                                        const compressed = await compressImage(file);
+                                        dt.items.add(compressed);
+                                    } catch (err) {
+                                        console.error('Error compressing image:', err);
+                                        dt.items.add(file); // fallback to original
+                                    }
+                                } else {
+                                    dt.items.add(file);
+                                }
+                            }
+                            input.files = dt.files;
+                        }
+
+                        // Submit form programmatically
+                        form.submit();
+                    });
+                });
+
+                async function compressImage(file, maxWidth = 1200, maxHeight = 1200, quality = 0.75) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(file);
+                        reader.onload = (event) => {
+                            const img = new Image();
+                            img.src = event.target.result;
+                            img.onload = () => {
+                                const canvas = document.createElement('canvas');
+                                let width = img.width;
+                                let height = img.height;
+
+                                if (width > height) {
+                                    if (width > maxWidth) {
+                                        height *= maxWidth / width;
+                                        width = maxWidth;
+                                    }
+                                } else {
+                                    if (height > maxHeight) {
+                                        width *= maxHeight / height;
+                                        height = maxHeight;
+                                    }
+                                }
+
+                                canvas.width = width;
+                                canvas.height = height;
+
+                                const ctx = canvas.getContext('2d');
+                                
+                                // Set white background for transparent images
+                                ctx.fillStyle = '#ffffff';
+                                ctx.fillRect(0, 0, width, height);
+                                
+                                ctx.drawImage(img, 0, 0, width, height);
+
+                                canvas.toBlob((blob) => {
+                                    if (!blob) {
+                                        reject(new Error('Canvas blob is null'));
+                                        return;
+                                    }
+                                    const compressedFile = new File([blob], file.name, {
+                                        type: 'image/jpeg',
+                                        lastModified: Date.now(),
+                                    });
+                                    resolve(compressedFile);
+                                }, 'image/jpeg', quality);
+                            };
+                            img.onerror = (err) => reject(img);
+                        };
+                        reader.onerror = (err) => reject(reader);
+                    });
+                }
+            });
+        </script>
     </body>
 </html>

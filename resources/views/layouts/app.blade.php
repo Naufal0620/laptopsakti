@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name') }}</title>
+        <title>{{ config('app.name') }} - Laptop Premium & Spesifikasi Sakti</title>
         <link rel="icon" href="{{ asset('images/logos/laptopsakti_logo.svg') }}" type="image/svg+xml">
 
         <!-- Fonts -->
@@ -17,7 +17,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased text-gray-900 {{ request()->routeIs('explore') ? '' : 'mb-16 sm:mb-0' }}">
-        <div class="min-h-screen bg-gray-50">
+        <div class="min-h-screen bg-slate-50">
             @if(!request()->routeIs('explore'))
                 <div class="hidden sm:block">
                     @include('layouts.navigation')

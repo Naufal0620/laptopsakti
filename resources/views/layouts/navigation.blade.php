@@ -1,45 +1,36 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white/80 backdrop-blur-xl border-b border-slate-100 sticky top-0 z-50 py-1 transition-all">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('Produk') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')">
-                        {{ __('Explore Video') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                        {{ __('Tentang Kami') }}
-                    </x-nav-link>
-                    @auth
-                        @if(Auth::user()->role === 'admin')
-                            <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')">
-                                {{ __('Admin Panel') }}
-                            </x-nav-link>
-                        @endif
-                    @endauth
-                </div>
+        <div class="flex justify-between h-16 items-center">
+            
+            <!-- Left Section: Logo & Brand -->
+            <div class="flex items-center space-x-2">
+                <a href="{{ route('home') }}" class="flex items-center space-x-2">
+                    <x-application-logo class="w-9 h-9 text-primary-600" />
+                    <span class="font-black text-xl tracking-tighter text-slate-900">{{ config('app.name') }}</span>
+                </a>
             </div>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <!-- Center Section: Navigation Links -->
+            <div class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <a href="{{ route('products.index') }}" class="hover:text-primary-600 transition {{ request()->routeIs('products.index') ? 'text-primary-600' : '' }}">Katalog</a>
+                <a href="{{ route('explore') }}" class="hover:text-primary-600 transition {{ request()->routeIs('explore') ? 'text-primary-600' : '' }}">Explore Video</a>
+                <a href="{{ route('about') }}" class="hover:text-primary-600 transition {{ request()->routeIs('about') ? 'text-primary-600' : '' }}">Tentang Kami</a>
+                @auth
+                    @if(Auth::user()->role === 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="hover:text-primary-600 transition {{ request()->routeIs('admin.*') ? 'text-primary-600' : '' }}">Admin Panel</a>
+                    @endif
+                @endauth
+            </div>
+
+            <!-- Right Section: Action / User Menu -->
+            <div class="hidden md:flex items-center space-x-4">
                 @auth
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                            <button class="inline-flex items-center px-3.5 py-2 border border-slate-200 text-xs font-bold uppercase tracking-wider rounded-lg text-slate-700 bg-white hover:text-primary-600 hover:border-primary-200 focus:outline-none transition">
                                 <div>{{ Auth::user()->name }}</div>
-
-                                <div class="ms-1">
+                                <div class="ms-1.5">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                     </svg>
@@ -55,7 +46,6 @@
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                                 <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
@@ -65,71 +55,56 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="px-3 py-3 rounded-md text-sm text-gray-700 hover:bg-gray-100 transition duration-150 ease-in-out font-semibold">Log in</a>
+                    <a href="{{ route('login') }}" class="hover:text-primary-600 text-xs font-bold uppercase tracking-wider text-slate-500 mr-2">Masuk</a>
                 @endauth
+                <a href="{{ route('products.index') }}" class="bg-primary-600 text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-primary-700 transition shadow-md shadow-primary-100">
+                    Mulai Belanja
+                </a>
             </div>
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+            <!-- Hamburger Button (Mobile) -->
+            <div class="flex items-center md:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-lg text-slate-400 hover:text-slate-500 hover:bg-slate-50 focus:outline-none transition">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
+
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <!-- Responsive Drawer Menu (Mobile) -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden md:hidden border-t border-slate-100 bg-white shadow-lg transition-all duration-300">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                {{ __('Produk') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('explore')" :active="request()->routeIs('explore')">
-                {{ __('Explore Video') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                {{ __('Tentang Kami') }}
-            </x-responsive-nav-link>
-            
+            <a href="{{ route('products.index') }}" class="block px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50 hover:text-primary-600 {{ request()->routeIs('products.index') ? 'text-primary-600 bg-slate-50' : '' }}">Katalog</a>
+            <a href="{{ route('explore') }}" class="block px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50 hover:text-primary-600 {{ request()->routeIs('explore') ? 'text-primary-600 bg-slate-50' : '' }}">Explore Video</a>
+            <a href="{{ route('about') }}" class="block px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50 hover:text-primary-600 {{ request()->routeIs('about') ? 'text-primary-600 bg-slate-50' : '' }}">Tentang Kami</a>
             @auth
                 @if(Auth::user()->role === 'admin')
-                    <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.*')">
-                        {{ __('Admin Panel') }}
-                    </x-responsive-nav-link>
+                    <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2.5 text-sm font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50 hover:text-primary-600 {{ request()->routeIs('admin.*') ? 'text-primary-600 bg-slate-50' : '' }}">Admin Panel</a>
                 @endif
             @endauth
         </div>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-4 border-t border-slate-150 bg-slate-50">
             @auth
-                <div class="px-4">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="px-4 mb-3">
+                    <div class="font-bold text-sm text-slate-800">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-xs text-slate-400">{{ Auth::user()->email }}</div>
                 </div>
-
-                <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
-                    </x-responsive-nav-link>
-
-                    <!-- Authentication -->
+                <div class="space-y-1">
+                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50">Profile</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-
-                        <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-responsive-nav-link>
+                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm font-bold uppercase tracking-wider text-slate-600 hover:bg-slate-50">Log Out</button>
                     </form>
                 </div>
             @else
-                <div class="px-4 py-2 border-t border-gray-100">
-                    <a href="{{ route('login') }}" class="block text-base font-medium text-gray-500 hover:text-gray-800 py-2">Log in</a>
+                <div class="px-4 flex gap-4">
+                    <a href="{{ route('login') }}" class="flex-1 text-center py-2 bg-slate-200 hover:bg-slate-350 rounded-lg text-sm font-bold uppercase tracking-wider text-slate-700">Masuk</a>
+                    <a href="{{ route('products.index') }}" class="flex-1 text-center py-2 bg-primary-600 hover:bg-primary-700 rounded-lg text-sm font-bold uppercase tracking-wider text-white shadow-md shadow-primary-50">Mulai Belanja</a>
                 </div>
             @endauth
         </div>

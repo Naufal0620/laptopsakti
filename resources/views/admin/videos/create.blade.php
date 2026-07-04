@@ -14,7 +14,7 @@
 
             <div>
                 <x-input-label for="product_id" :value="__('Pilih Produk')" />
-                <select id="product_id" name="product_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                <select id="product_id" name="product_id" class="mt-1 block w-full border-gray-300 focus:border-primary-500 focus:ring-primary-500 rounded-md shadow-sm" required>
                     <option value="">-- Pilih Laptop --</option>
                     @foreach($products as $product)
                         <option value="{{ $product->id }}" {{ old('product_id') == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
@@ -26,14 +26,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <x-input-label for="video" :value="__('File Video (MP4, Max 20MB)')" />
-                    <input id="video" name="video" type="file" accept="video/mp4" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" required />
+                    <input id="video" name="video" type="file" accept="video/mp4" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100" required />
                     <p class="mt-1 text-xs text-gray-400 italic">Rasio disarankan: 9:16 (Portrait)</p>
                     <x-input-error class="mt-2" :messages="$errors->get('video')" />
                 </div>
 
                 <div>
                     <x-input-label for="thumbnail" :value="__('Thumbnail / Sampul (Opsional)')" />
-                    <input id="thumbnail" name="thumbnail" type="file" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" />
+                    <input id="thumbnail" name="thumbnail" type="file" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100" />
                     <x-input-error class="mt-2" :messages="$errors->get('thumbnail')" />
                 </div>
             </div>

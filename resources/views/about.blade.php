@@ -16,12 +16,12 @@
             </div>
 
             <!-- Visual & Mission Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 bg-white p-8 sm:p-12 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-100/50">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 bg-white p-8 sm:p-12 rounded-2xl border border-slate-100 shadow-xl shadow-slate-100/50">
                 <div class="relative">
-                    <div class="aspect-video bg-slate-900 rounded-3xl overflow-hidden shadow-lg border border-slate-800">
+                    <div class="aspect-video bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-800">
                         <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="LaptopSakti Office" class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-primary-600 text-white p-6 rounded-3xl shadow-xl hidden sm:block border border-primary-500/20">
+                    <div class="absolute -bottom-6 -right-6 bg-primary-600 text-white p-6 rounded-xl shadow-xl hidden sm:block border border-primary-500/20">
                         <p class="text-3xl font-black italic leading-none mb-1">Premium</p>
                         <p class="text-[9px] uppercase tracking-widest font-black opacity-80 leading-none">Notebook Showcase</p>
                     </div>
@@ -40,19 +40,19 @@
 
             <!-- Stats Section -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 text-center">
-                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                <div class="p-6 bg-white border border-slate-100 rounded-xl shadow-sm">
                     <p class="text-3xl sm:text-4xl font-black text-primary-600 leading-none mb-2">100%</p>
                     <p class="text-xs font-bold text-slate-500 uppercase tracking-widest leading-none">Original</p>
                 </div>
-                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                <div class="p-6 bg-white border border-slate-100 rounded-xl shadow-sm">
                     <p class="text-3xl sm:text-4xl font-black text-primary-600 leading-none mb-2">24h</p>
                     <p class="text-xs font-bold text-slate-500 uppercase tracking-widest leading-none">Chat Admin</p>
                 </div>
-                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                <div class="p-6 bg-white border border-slate-100 rounded-xl shadow-sm">
                     <p class="text-3xl sm:text-4xl font-black text-primary-600 leading-none mb-2">1k+</p>
                     <p class="text-xs font-bold text-slate-500 uppercase tracking-widest leading-none">Unit Terjual</p>
                 </div>
-                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                <div class="p-6 bg-white border border-slate-100 rounded-xl shadow-sm">
                     <p class="text-3xl sm:text-4xl font-black text-primary-600 leading-none mb-2">Official</p>
                     <p class="text-xs font-bold text-slate-500 uppercase tracking-widest leading-none">Warranty</p>
                 </div>

@@ -12,9 +12,16 @@ class Product extends Model
 
     protected $fillable = [
         'name',
+        'brand',
         'description',
+        'processor',
+        'ram',
+        'storage',
+        'graphic_card',
+        'screen_size',
         'price',
         'is_active',
+        'sold',
     ];
 
     /**

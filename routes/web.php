@@ -13,6 +13,7 @@ use App\Http\Controllers\ExploreController;
 
 // Public Catalog Routes
 Route::get('/', [ProductController::class, 'index'])->name('home');
+Route::get('/products', [ProductController::class, 'catalog'])->name('products.index');
 Route::get('/explore', [ExploreController::class, 'index'])->name('explore');
 Route::get('/about', function () {
     return view('about');
