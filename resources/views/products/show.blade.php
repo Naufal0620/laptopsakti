@@ -106,15 +106,15 @@
                                 <!-- Brand Info -->
                                 @if($product->brand)
                                     <div class="flex items-center p-3 bg-white border border-slate-100 rounded-xl">
-                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3">
+                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3 flex-shrink-0">
                                             <!-- Brand icon -->
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v10m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div class="min-w-0 flex-1">
                                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Merek</p>
-                                            <p class="text-xs font-black text-slate-800 leading-none truncate max-w-[120px]">{{ $product->brand }}</p>
+                                            <p class="text-xs font-black text-slate-800 leading-tight break-words">{{ $product->brand }}</p>
                                         </div>
                                     </div>
                                 @endif
@@ -122,7 +122,7 @@
                                 <!-- Processor Info -->
                                 @if($product->processor)
                                     <div class="flex items-center p-3 bg-white border border-slate-100 rounded-xl">
-                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3">
+                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3 flex-shrink-0">
                                             <!-- CPU icon -->
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <rect x="4" y="4" width="16" height="16" rx="2" stroke-width="2" />
@@ -130,9 +130,9 @@
                                                 <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 15h3M1 9h3M1 15h3" stroke-width="2" stroke-linecap="round"/>
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div class="min-w-0 flex-1">
                                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Processor</p>
-                                            <p class="text-xs font-black text-slate-800 leading-none truncate max-w-[120px]">{{ $product->processor }}</p>
+                                            <p class="text-xs font-black text-slate-800 leading-tight break-words">{{ $product->processor }}</p>
                                         </div>
                                     </div>
                                 @endif
@@ -140,16 +140,16 @@
                                 <!-- RAM Info -->
                                 @if($product->ram)
                                     <div class="flex items-center p-3 bg-white border border-slate-100 rounded-xl">
-                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3">
+                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3 flex-shrink-0">
                                             <!-- RAM icon -->
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <rect x="2" y="6" width="20" height="12" rx="2" stroke-width="2"/>
                                                 <path d="M6 6v12M10 6v12M14 6v12M18 6v12" stroke-width="1.5" stroke-linecap="round"/>
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div class="min-w-0 flex-1">
                                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">RAM Memory</p>
-                                            <p class="text-xs font-black text-slate-800 leading-none truncate max-w-[120px]">{{ $product->ram }} GB</p>
+                                            <p class="text-xs font-black text-slate-800 leading-tight break-words">{{ $product->ram }} GB</p>
                                         </div>
                                     </div>
                                 @endif
@@ -157,7 +157,7 @@
                                 <!-- Storage Info -->
                                 @if($product->storage)
                                     <div class="flex items-center p-3 bg-white border border-slate-100 rounded-xl">
-                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3">
+                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3 flex-shrink-0">
                                             <!-- HDD/SSD icon -->
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/>
@@ -165,9 +165,9 @@
                                                 <path d="M14 7h4M14 11h4M6 16h12" stroke-width="2" stroke-linecap="round"/>
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div class="min-w-0 flex-1">
                                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Penyimpanan</p>
-                                            <p class="text-xs font-black text-slate-800 leading-none truncate max-w-[120px]">
+                                            <p class="text-xs font-black text-slate-800 leading-tight break-words">
                                                 {{ $product->storage >= 1024 ? ($product->storage/1024) . ' TB' : $product->storage . ' GB' }}
                                             </p>
                                         </div>
@@ -177,16 +177,16 @@
                                 <!-- GPU Info -->
                                 @if($product->graphic_card)
                                     <div class="flex items-center p-3 bg-white border border-slate-100 rounded-xl">
-                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3">
+                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3 flex-shrink-0">
                                             <!-- GPU icon -->
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2"/>
                                                 <path d="M7 12l3-3 4 6 3-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div class="min-w-0 flex-1">
                                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Kartu Grafis</p>
-                                            <p class="text-xs font-black text-slate-800 leading-none truncate max-w-[120px]">{{ $product->graphic_card }}</p>
+                                            <p class="text-xs font-black text-slate-800 leading-tight break-words">{{ $product->graphic_card }}</p>
                                         </div>
                                     </div>
                                 @endif
@@ -194,16 +194,16 @@
                                 <!-- Screen Size Info -->
                                 @if($product->screen_size)
                                     <div class="flex items-center p-3 bg-white border border-slate-100 rounded-xl">
-                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3">
+                                        <div class="p-2.5 bg-primary-50 text-primary-600 rounded-lg mr-3 flex-shrink-0">
                                             <!-- Monitor icon -->
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <rect x="3" y="3" width="18" height="12" rx="2" stroke-width="2"/>
                                                 <path d="M9 21h6m-3-6v6M7 15h10" stroke-width="2" stroke-linecap="round"/>
                                             </svg>
                                         </div>
-                                        <div>
+                                        <div class="min-w-0 flex-1">
                                             <p class="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Ukuran Layar</p>
-                                            <p class="text-xs font-black text-slate-800 leading-none truncate max-w-[120px]">{{ $product->screen_size }} Inci</p>
+                                            <p class="text-xs font-black text-slate-800 leading-tight break-words">{{ $product->screen_size }} Inci</p>
                                         </div>
                                     </div>
                                 @endif
