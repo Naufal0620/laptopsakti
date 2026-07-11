@@ -27,8 +27,13 @@
                 <input type="text" name="phone" value="{{ old('phone') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500" placeholder="Contoh: 08123456789" required>
             </div>
 
-
-
+            <div>
+                <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider mb-2">Role / Hak Akses</label>
+                <select name="role" class="w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500 text-sm" required>
+                    <option value="admin" {{ old('role') === 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="customer" {{ old('role') === 'customer' ? 'selected' : '' }}>Customer</option>
+                </select>
+            </div>
             <div>
                 <label class="block text-sm font-bold text-gray-700 uppercase tracking-wider mb-2">Password</label>
                 <input type="password" name="password" class="w-full border-gray-300 rounded-md shadow-sm focus:border-orange-500 focus:ring-orange-500" required>

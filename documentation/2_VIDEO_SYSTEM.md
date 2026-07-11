@@ -1,6 +1,6 @@
 # 2. Video System Architecture
 
-Dokumen ini menjelaskan teknis implementasi fitur **Video-First Discovery** pada Kulivio. Sistem ini difokuskan pada manajemen file video standar yang diunggah oleh Admin/Seller.
+Dokumen ini menjelaskan teknis implementasi fitur **Video-First Discovery** pada LaptopSakti. Sistem ini difokuskan pada manajemen file video standar yang diunggah oleh Admin/Seller.
 
 ## A. Arsitektur Video
 

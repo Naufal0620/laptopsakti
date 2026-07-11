@@ -1,53 +1,41 @@
 # 5. WhatsApp Integration
 
-Dokumen ini menjelaskan alur integrasi WhatsApp sebagai sistem konfirmasi pembayaran dan layanan pelanggan utama di platform Kulivio.
+Dokumen ini menjelaskan alur integrasi WhatsApp sebagai media komunikasi utama untuk transaksi dan layanan pelanggan di platform **LaptopSakti**.
 
 ## 1. Peran WhatsApp dalam Transaksi
 
-Fase awal Kulivio tidak menggunakan *payment gateway* otomatis (seperti Midtrans/Xendit) untuk meminimalkan biaya operasional dan menyesuaikan dengan kebiasaan UMKM. WhatsApp digunakan untuk:
-- Konfirmasi pembayaran (mengirim bukti transfer).
-- Koordinasi antara Admin dan Pembeli.
-- Pemberitahuan status pesanan secara manual (opsional).
+LaptopSakti tidak menggunakan *payment gateway* otomatis (seperti Midtrans/Xendit) maupun sistem checkout transaksi di dalam database web. Sistem e-commerce dioperasikan dengan metode **Direct WhatsApp Redirection**:
+- Pelanggan melakukan pemesanan dan konsultasi secara langsung dengan Admin/Penjual.
+- Semua koordinasi mengenai metode pembayaran (transfer bank, e-wallet, dll.) dan pengiriman dilakukan di dalam chat WhatsApp.
+- Status penjualan/stok (seperti mengubah unit terjual/`sold` atau status aktif/`is_active`) dikelola secara manual oleh Admin melalui Dashboard Admin web.
 
-## 2. Alur Redireksi Pesanan (Order-to-WA)
+## 2. Alur Redireksi Pemesanan (Order-to-WA)
 
-Setelah pengguna menekan tombol **"Checkout"** atau **"Bayar Sekarang"**, sistem akan:
-1.  Menyimpan data pesanan ke database dengan status `pending`.
-2.  Menyusun pesan teks otomatis berbasis template.
-3.  Mengarahkan pengguna ke URL: `https://wa.me/{admin_phone}?text={encoded_message}`.
+Ketika pengguna mengeklik tombol **"Beli"** di halaman Explore Feed (Video Player) atau tombol **"Hubungi Admin via WhatsApp"** di halaman Detail Produk, sistem akan:
+1. Menyusun pesan teks otomatis berbasis data laptop (Nama & Harga).
+2. Membuka URL WhatsApp API: `https://wa.me/{admin_whatsapp_number}?text={encoded_message}` pada tab baru browser.
 
 ## 3. Template Pesan Otomatis
 
-Template pesan dirancang agar Admin dapat langsung mengenali detail pesanan tanpa bertanya balik.
+Pesan yang dikirimkan diformat secara terstruktur agar Admin dapat langsung mengenali produk yang diminati pelanggan tanpa perlu bertanya kembali.
 
-**Format Template:**
+### Format Template:
 ```text
-Halo Admin Kulivio! Saya ingin mengonfirmasi pembayaran untuk pesanan berikut:
+Halo LaptopSakti! Saya tertarik untuk membeli laptop berikut:
 
-🆔 ID Pesanan: #ORD-20260428-001
-👤 Nama: [Nama User]
-🛍️ Detail Item:
-   - 2x Risol Mayo (Rp 10.000)
-   - 1x Es Cendol (Rp 5.000)
-💰 Total Tagihan: Rp 15.000
-🚚 Alamat Kirim: [Alamat Lengkap]
+💻 Laptop: [Nama Laptop]
+💵 Harga: Rp [Harga Terformat]
 
-Saya akan segera mengirimkan bukti transfernya. Terima kasih!
+Apakah laptop ini masih tersedia?
 ```
 
 ## 4. Konfigurasi Sistem
 
-Data yang diperlukan untuk integrasi ini disimpan di tabel `settings`:
-- **`admin_whatsapp_number`**: Nomor tujuan utama untuk konfirmasi pembayaran (format internasional, misal: `628123456789`).
-- **Standardized Template**: Saat ini template pesan distandarisasi di dalam sistem untuk memastikan kelengkapan data pesanan.
+Nomor WhatsApp Admin utama disimpan di dalam database pada tabel `settings` dengan konfigurasi sebagai berikut:
+- **Key**: `admin_whatsapp_number`
+- **Display Name**: `Nomor WhatsApp Penjual`
+- **Value**: `6285270110305` (Menggunakan format internasional tanpa simbol `+` atau spasi)
+- **Type**: `string`
+- **Group**: `general`
 
-## 5. Verifikasi Manual oleh Admin
-
-1.  Admin menerima pesan WhatsApp dan bukti transfer (foto/screenshot) dari pembeli.
-2.  Admin memeriksa rekening bank perusahaan/UMKM.
-3.  Setelah dana dipastikan masuk, Admin masuk ke Dashboard Admin Kulivio.
-4.  Admin mencari ID Pesanan yang sesuai dan mengubah status dari `pending` menjadi `paid`.
-5.  Sistem secara otomatis (atau via WA balik) menginfokan bahwa pembayaran telah diterima dan pesanan masuk ke tahap `processing`.
-
-## 6. Pengembangan Masa Depan (Automated Notification)
-- Menggunakan API pihak ketiga (seperti Fonnte atau WA Business API) untuk mengirim notifikasi perubahan status secara otomatis ke nomor `phone` user setiap kali status berubah menjadi `shipped` atau `completed`.
+Admin dapat mengubah nomor WhatsApp tujuan ini kapan saja melalui halaman **Pengaturan Sistem** di Dashboard Admin.

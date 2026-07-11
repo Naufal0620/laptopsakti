@@ -41,8 +41,8 @@
                         <div class="text-xs text-gray-400">{{ $user->phone }}</div>
                     </td>
                     <td class="px-6 py-4">
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary-50 text-primary-600 uppercase tracking-wider">
-                            Admin
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold {{ $user->role === 'admin' ? 'bg-primary-50 text-primary-600' : 'bg-gray-100 text-gray-600' }} uppercase tracking-wider">
+                            {{ $user->role }}
                         </span>
                     </td>
                     <td class="px-6 py-4 text-xs text-gray-500">{{ $user->created_at->format('d/m/Y') }}</td>

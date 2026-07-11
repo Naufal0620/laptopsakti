@@ -46,6 +46,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', 'max:20'],
+            'role' => ['required', 'string', 'in:admin,customer'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -54,7 +55,7 @@ class UserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
-            'role' => 'admin',
+            'role' => $request->role,
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User baru berhasil dibuat.');

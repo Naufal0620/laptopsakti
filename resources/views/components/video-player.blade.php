@@ -5,7 +5,6 @@
         isPlaying: false,
         observer: null,
         showPlayIcon: false,
-        isAddingToCart: false,
         toggleMute() {
             $store.videoPlayer.toggleMute();
         },
@@ -19,34 +18,6 @@
             }
             this.showPlayIcon = true;
             setTimeout(() => this.showPlayIcon = false, 500);
-        },
-        async addToCart(event, url) {
-            if (this.isAddingToCart) return;
-            this.isAddingToCart = true;
-            
-            const formData = new FormData(event.target);
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Accept': 'application/json',
-                    }
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    alert(data.message || 'Produk berhasil ditambahkan ke keranjang!');
-                } else {
-                    alert('Gagal menambahkan ke keranjang. Silakan coba lagi.');
-                }
-            } catch (err) {
-                console.error('Cart error:', err);
-                alert('Terjadi kesalahan jaringan.');
-            } finally {
-                this.isAddingToCart = false;
-            }
         },
         async share() {
             const url = '{{ route('products.show', $video->product) }}';
