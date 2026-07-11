@@ -22,6 +22,13 @@
         <span class="text-[10px] mt-1 font-medium">Katalog</span>
     </a>
 
+    <a href="{{ route('about') }}" class="flex flex-col items-center {{ request()->routeIs('about') ? 'text-primary-600' : 'text-gray-400' }}">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="text-[10px] mt-1 font-medium">Tentang</span>
+    </a>
+
     @auth
         @if(Auth::user()->role === 'admin')
             <a href="{{ route('admin.dashboard') }}" class="flex flex-col items-center {{ request()->routeIs('admin.*') ? 'text-primary-600' : 'text-gray-400' }}">
