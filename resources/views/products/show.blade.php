@@ -255,13 +255,13 @@
         </div>
 
         <!-- Sticky Purchase Bottom Bar (Mobile Only) -->
-        <div class="sm:hidden fixed bottom-16 left-0 right-0 bg-white/90 backdrop-blur-xl border-t border-slate-100 p-4 z-40 shadow-lg">
+        <div class="sm:hidden fixed bottom-16 left-0 right-0 bg-transparent p-4 z-40">
             @if($product->is_active)
-                <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-md gap-2 active:scale-95 transition-all">
+                <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center py-4 bg-primary-600 hover:bg-primary-500 text-white rounded-2xl font-black text-xs uppercase tracking-widest shadow-lg gap-2 active:scale-95 transition-all">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.864.002-2.637-1.03-5.118-2.905-6.993C16.458 1.87 13.987.84 11.36.84c-5.442 0-9.866 4.424-9.87 9.869-.001 1.702.463 3.361 1.34 4.8l-.997 3.646 3.734-.979zM15.82 12.9c-.22-.11-1.298-.64-1.5-.71-.2-.08-.35-.12-.5.1-.15.22-.58.73-.71.88-.13.15-.26.17-.48.06-.22-.11-.93-.34-1.77-1.09-.65-.58-1.09-1.3-1.22-1.51-.13-.22-.01-.33.1-.44.1-.1.22-.26.33-.39.11-.13.15-.22.22-.37.07-.15.03-.28-.02-.39-.05-.1-.49-1.18-.67-1.62-.17-.43-.35-.37-.48-.37H9.2c-.15 0-.4.06-.6.28-.2.22-.76.75-.76 1.83 0 1.08.79 2.13.9 2.28.11.15 1.55 2.37 3.76 3.32.53.22.94.36 1.26.46.53.17 1.01.14 1.39.09.42-.06 1.3-.53 1.48-1.04.18-.51.18-.95.13-1.04-.05-.09-.2-.15-.42-.26z"/>
                     </svg>
-                    Beli via WhatsApp (Fast Response)
+                    Beli via WhatsApp
                 </a>
             @else
                 <button disabled class="w-full flex items-center justify-center py-4 bg-slate-200 text-slate-400 rounded-2xl font-black text-xs uppercase tracking-widest cursor-not-allowed">
