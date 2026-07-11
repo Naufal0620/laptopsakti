@@ -125,16 +125,8 @@
 
     {{-- Overlay Controls --}}
     <div class="absolute bottom-6 right-4 flex flex-col items-center space-y-6 z-20">
-        {{-- WhatsApp Order Link (Beli) --}}
-        @php
-            $whatsappNumber = \App\Models\Setting::getValue('admin_whatsapp_number', '6285270110305');
-            $message = "Halo LaptopSakti! Saya tertarik untuk membeli laptop berikut:\n\n" .
-                       "💻 Laptop: " . $video->product->name . "\n" .
-                       "💵 Harga: Rp " . number_format($video->product->price, 0, ',', '.') . "\n\n" .
-                       "Apakah laptop ini masih tersedia?";
-            $waUrl = "https://wa.me/" . $whatsappNumber . "?text=" . rawurlencode($message);
-        @endphp
-        <a href="{{ $waUrl }}" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center text-white">
+        {{-- Product Detail Link (Beli) --}}
+        <a href="{{ route('products.show', $video->product) }}" class="flex flex-col items-center text-white">
             <div class="p-3 bg-white/10 backdrop-blur-md rounded-full hover:bg-white/20 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
