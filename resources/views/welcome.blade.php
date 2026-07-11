@@ -101,8 +101,8 @@
                                 @if($product->videos->count() > 0)
                                     <div class="absolute bottom-4 right-4">
                                         <span class="bg-rose-600/90 backdrop-blur-sm w-7 h-7 rounded-full text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168l4.74 3.555a.5.5 0 010 .893l-4.74 3.556A.5.5 0 019 14.721V7.279a.5.5 0 01.755-.432z" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                                                <path fill-rule="evenodd" d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm6.3-2.841A1.5 1.5 0 006 8.428v3.144a1.5 1.5 0 002.3 1.268l2.493-1.572a1.5 1.5 0 000-2.537L8.3 7.159z" clip-rule="evenodd" />
                                             </svg>
                                         </span>
                                     </div>
