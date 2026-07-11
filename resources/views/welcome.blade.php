@@ -100,7 +100,7 @@
 
                                 @if($product->videos->count() > 0)
                                     <div class="absolute bottom-4 right-4">
-                                        <span class="bg-rose-600/90 backdrop-blur-sm p-1.5 rounded-full text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                        <span class="bg-rose-600/90 backdrop-blur-sm w-7 h-7 rounded-full text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                                             <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168l4.74 3.555a.5.5 0 010 .893l-4.74 3.556A.5.5 0 019 14.721V7.279a.5.5 0 01.755-.432z" />
                                             </svg>
