@@ -54,8 +54,6 @@
                             </form>
                         </x-slot>
                     </x-dropdown>
-                @else
-                    <a href="{{ route('login') }}" class="hover:text-primary-600 text-xs font-bold uppercase tracking-wider text-slate-500 mr-2">Masuk</a>
                 @endauth
                 <a href="{{ route('products.index') }}" class="bg-primary-600 text-white px-5 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-primary-700 transition shadow-md shadow-primary-100">
                     Mulai Belanja
@@ -102,9 +100,8 @@
                     </form>
                 </div>
             @else
-                <div class="px-4 flex gap-4">
-                    <a href="{{ route('login') }}" class="flex-1 text-center py-2 bg-slate-200 hover:bg-slate-350 rounded-lg text-sm font-bold uppercase tracking-wider text-slate-700">Masuk</a>
-                    <a href="{{ route('products.index') }}" class="flex-1 text-center py-2 bg-primary-600 hover:bg-primary-700 rounded-lg text-sm font-bold uppercase tracking-wider text-white shadow-md shadow-primary-50">Mulai Belanja</a>
+                <div class="px-4">
+                    <a href="{{ route('products.index') }}" class="block w-full text-center py-2.5 bg-primary-600 hover:bg-primary-700 rounded-lg text-sm font-bold uppercase tracking-wider text-white shadow-md shadow-primary-50">Mulai Belanja</a>
                 </div>
             @endauth
         </div>
